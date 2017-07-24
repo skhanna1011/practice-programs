@@ -1,0 +1,4 @@
+window.history.lenght;
+window.history.go();
+window.history.go(1);
+window.history.back(1);

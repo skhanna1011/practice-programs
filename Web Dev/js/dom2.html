@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Creation of html tags via DOM</title>
+</head>
+<body>
+  <button onclick="sample()">Click</button>
+  <script type="text/javascript">
+    function sample(){
+  	  var val1 = document.createElement("div");
+  	  var val2 = document.body.appendChild(val1);
+  	  val2.style.border = "3px solid red";
+  	  var head1 = document.createElement("h1");
+  	  var val3 = val2.appendChild(head1);
+  	  val3.style.textAlign = "center";
+  	  val3.innerHTML = "Hello World";
+    }
+  </script>
+</body>
+</html>

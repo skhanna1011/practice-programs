@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <script type="text/javascript" src="angular.js"></script>
+    <script type="text/javascript">
+      var moduleref = angular.module("main",[]);
+      moduleref.controller("yelanka", yelFunc);
+      function yelFunc($scope) {
+        $scope.name = "Yelanka city";
+        $scope.distance = "1 mil light years"
+      }
+      moduleref.controller("kora", korFunc);
+      function korFunc($scope) {
+        $scope.name = "Koramangala"
+        $scope.famous = "Food Joints"
+        $scope.population = "1 mil"
+      }
+      moduleref.controller("indira", indFunc);
+      function indFunc($scope) {
+        $scope.name = "Indiranagar";
+        $scope.famous = "Pubs";
+        $scope.population = "100,000"
+      }
+    </script>
+</head>
+<body ng-app = "main">
+  The addition of 200 and 100 is <strong>{{200+100}}</strong><br>
+  The multiplication of 200 and 100 is <strong>{{200*100}}</strong><br>
+  The diviion of 200 and 100 is <strong>{{200/100}}</strong><br>
+  <div ng-controller = "yelanka">
+    The name of the place is <strong>{{name}}</strong> and it is <strong>{{distance}}</strong> away.
+  </div>
+  <div ng-controller = "kora">
+    The name of the place is <strong>{{name}}</strong> and it is famous fo <strong>{{famous}}</strong>. It has a population of <strong>{{population}}</strong>.
+  </div>
+  <div ng-controller = "indira">
+    The name of the place is <strong>{{name}}</strong> and it is famous fo <strong>{{famous}}</strong>. It has a population of <strong>{{population}}</strong>.
+  </div>
+</body>
+</html>

@@ -1,0 +1,40 @@
+go to meeting id:833-633-557
+<!DOCTYPE html>
+<html>
+<head>
+<title>Local Storage</title>
+<style type="text/css">
+	#result,#display{
+		border: 1px solid green;
+		padding: 10px;
+		margin: 15px;
+	}
+</style>
+</head>
+<body>
+	<div id = "result"></div>
+	<div id = "display"></div>
+	<script type="text/javascript">
+		function store(){
+			if(typeof(Storage)==undefined)
+			{
+				alert("No Storage");		
+			}
+			else
+			{
+				var val = document.getElementById("val").value;
+				localStorage.setItem('msg',val);
+				document.getElementById("result").innerHTML = "The value is stored in local storage";
+			}
+		}
+		function display(){
+			var storedValue = localStorage.getItem('msg');
+			document.getElementById("display").innerHTML = "Stored value is " +storedValue;
+		}
+	</script>
+	<label for = "val">Enter the Value</label>
+	<input type="text" id="val">
+	<button onclick="store()">Store the value</button>
+	<button onclick="display()">Display the value</button>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+  <script type="text/javascript" src="angular.js"></script>
+  <script type="text/javascript">
+    var app = angular.module("myApp",["ngResource"]);
+    app.factory("Entry", function ($resource) {
+    return resource("api/comments/:id");
+    });
+    app.controller("test", function($scope, Entry){
+      $scope.name = "Sumit";
+      $scope.entries = null, $scope.singleComment = null,$scope.id=12;
+      console.log(Entry);
+      $scope.fetch = function(id){
+        $scope.singleComment = Entry.get({id:$scope.id});
+      }
+      $scope.deleteComment = function(){
+        Entry.delete({id:$scope.id},function(){
+          alert("Comment delete request sent to server");
+        })
+      }
+      $scope.postback = function(){
+        Entry.save($scope.singleComment,function(){
+          alert("MOdified comment sucessfully posted back to server");
+        })
+      }
+      $scope.fetchAll = function(){
+        $scope.entries = Entry.query();
+      }
+    });
+  </script>
+</head>
+<body data-ng-app="myApp">
+  <div ng-controller = "test">
+    <input type="text" ng-model = "name"/>
+    {{name}}
+    <button ng-click = "fetchAll()">Fetch All</button>
+    <div id= "all-comments">
+      <div ng-repeat="entry in entries">Comment fetched id comment with id {{entry.id}} and full description as {{entry.description}}
+      </div>
+    </div>
+    <input type="number" ng-model="id"/>
+    <button ng-click="fetch()">Get Comment</button>
+    <button ng-click="deleteComment()">Delete Comment</button>
+    <div id = "single-comment">The Comment with id {{id}} has status {{singleComment.status}} and full description as {{singleComment.fulldescription}}</div>
+    Modify the comment bellow
+    <input type="text" ng-model="singleComment.staatus"/>
+    <input type="text" ng-model="singleComment.fulldescription">
+    <button ng-click = "postback()">Post Back</button>
+  </div>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Indexed Db</title>
+	<script type="text/javascript">
+		function openDatabase(){
+			var request = window.indexedDB.open('students',3);
+			request.onsuccess = function(e){
+				var db = e.target.result;
+				console.log(db);
+				console.log("Sucessfully opened the database");
+			}
+			request.onerror = function(){
+				console.log("Sorry, Some error occured");
+			}
+			request.onupgradeneeded = function(e){
+				var db = e.target.result;
+				if (db.objectStoreNames.contains("studentstable")){
+					console.log("Table already exists");
+				}
+				else{
+					db.createObjectStore('studentstable', {autoIncrement:true});
+				}
+			}
+		}
+		function addstudent(){
+			var dbOpenRequest = window.indexedDB.open("students");
+			dbOpenRequest.onsuccess = function(e){
+				var db = e.target.result;
+				var transaction = db.transaction(["studentstable"],'readwrite');
+				transaction.oncomplete = function(e){
+					console.log("Transaction Completed");
+				}
+				transaction.onerror = function(e){
+					console.log("Error");
+				}
+				var store = transaction.objectStore("studentstable");
+				var data = {name: "Ujwal",age:25};
+				var addRequest = store.add(data);
+				addRequest.onsuccess = function(e){
+					console.log("Data added Sucessfully");
+				}
+			}
+		}
+	</script>
+</head>	
+<body>
+<button onclick= "openDatabase()">Open Database</button>
+<button onclick="addstudent()">Add Student</button>
+</body>
+</html>

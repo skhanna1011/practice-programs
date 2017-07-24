@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+  <script src="angular.js" type="text/javascript"></script>
+  <script type="text/javascript">
+    angular.module("app", [])
+    .controller("studentCtrl",function($http){
+      this.students = [];
+      var self = this;
+      this.getStudents = function(){
+        var promise = $http({url:"student.php"});
+        promise.then(sucessFunc, failFunc);
+      }
+      var sucessFunc = function(response){
+        var studentsObj = response.data;
+        self.students = studentsObj
+      }
+      var failFunc = function(response){
+        console.log(response)
+      }
+    });
+  </script>
+</head>
+<body ng-app = "app">
+  <div ng-controller="studentCtrl as ob">
+    <button ng-click="ob.getStudents()">Get Students</button>
+    <div ng-repeat = "student in ob.students">
+      {{student.name}} and {{student.hobbies}}
+    </div>
+  </div>
+</body>
+</html>

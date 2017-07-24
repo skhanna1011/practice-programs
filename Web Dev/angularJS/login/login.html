@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Hi</title>
+  <style type="text/css">
+    input{
+      display: block;
+      padding: 5px;
+      border-radius: 5px;
+    }
+    #begin{
+      padding: 10px;
+      margin: 100px 500px;
+      border: 5px solid green;
+      border-radius: 5px;
+    }
+  </style>
+  <script type="text/javascript" src="angular.js"></script>
+  <script type="text/javascript">
+    angular.module("app",[])
+    .directive("login", function() {
+      return{
+        restrict: "E",
+        templateUrl: "template.html",
+        replace: true,
+        scope: {},
+        controller: function($scope){
+          $scope.mood = "Amazing";
+          $scope.validate = function(){
+            if($scope.username == undefined){
+              alert("Username can't be Empty")
+            }
+          }
+        }
+      }
+    })
+  </script>
+</head>
+<body ng-app="app">
+  <login></login>
+</body>
+</html>

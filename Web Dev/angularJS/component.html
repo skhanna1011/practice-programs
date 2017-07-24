@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Title</title>
+  <meta charset="UTF-8"/>
+  <script type="text/javascript" src="angular.js"></script>
+  <script type="text/javascript">
+    angular.module("myApp",[])
+    .component("helloWorld", {
+      template: "Hello {{$ctrl.name}}, I'm {{$ctrl.myName}}!",
+      bindings: { name: "@"},
+      controller: function(){
+        this.myName = "Shivam ";
+      }
+    });
+  </script>
+</head>
+<body>
+  <div ng-app="myApp">
+    <hello-world name="John"> </hello-world>
+  </div>
+</body>
+</html>

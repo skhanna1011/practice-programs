@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Order by</title>
+  <script src="angular.js" type="text/javascript"></script>
+  <script type="text/javascript">
+    angular.module("orderBy", [])
+    .controller("orderByController", function($scope,$filter){
+      $scope.friends = [{name:"Smith", phone:"1084-98897", age:"20"},
+      {name:"Smith", phone:"1084-980897", age:"20"},
+      {name:"Sunil", phone:"7879-545647", age:"30"},
+      {name:"John", phone:"8654-563584", age:"40"},
+      {name:"Ajay", phone:"9754-988970", age:"50"}]
+      $scope.appName = "Sorting";
+    })
+  </script>
+</head>
+<body>
+  <div ng-app = "orderBy">
+    <div ng-controller = "orderByController">
+      The app name is <strong>{{appName}}</strong><br/>
+      <select ng-model = "sortVal" ng-init="name">
+        <option value="name">Name</option>
+        <option value="age">Age</option>
+        <option value="phone">Phone</option>
+      </select>
+      <input type="checkbox" ng-model="ascdsc">
+      <input type="text" ng-model="searchStr" placeholder="Search">
+      <table border="4">
+        <tr>
+          <th>Name</th>
+          <th>Phone no.</th>
+          <th>Age</th>
+        </tr>
+        <tr ng-repeat = "friend in friends | orderBy: sortVal :ascdsc | filter:searchStr">
+          <td>{{friend.name}}</td>
+          <td>{{friend.phone}}</td>
+          <td>{{friend.age}}</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</body>
+</html>

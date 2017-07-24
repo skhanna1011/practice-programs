@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+</head>
+<body>
+  <div id="container">click here</div>
+  <div id="container1">Click here</div>
+  <button id="btn">Post</button>
+  <script type="text/javascript">
+    var ref = document.getElementById("container");
+    ref.onclick = function () {
+      alert("This div area is clicked");
+    }
+    var ref1 = document.getElementById("container1");
+    var ref2 = document.getElementById("btn");
+    ref1.addEventListener('dblclick', sample);
+    ref2.addEventListener('mouseover', btnMsg);
+    function sample() {
+      alert("I am called");
+    }
+    function btnMsg(){
+      alert("Hello");
+    }
+  </script>
+</body>
+</html>

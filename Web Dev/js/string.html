@@ -1,0 +1,14 @@
+<script type="text/javascript">
+	var name = "Zenrays";
+    var email = "skhanna1011@gmail.com";
+	String.prototype.niceWeather = function(){
+		console.log("Nice weather outside");
+	}
+	String.prototype.printNew = function(e){
+		for (var i = 0; i<e.length; i++){
+		    console.log(e[i]);
+		}
+	}
+	email.niceWeather();
+	name.printNew(name);
+</script>

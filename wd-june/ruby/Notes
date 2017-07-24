@@ -1,0 +1,10 @@
+Use while for conditions.
+Use for when the no of times we have to loop is known.
+Whenever we invoke a method on an obj it returns a new obj.
+count on array counts the instance of each obj passed to it on whole.
+count on string counts the instance of each letter of the string passed to it.
+.find is called on an array, if the record is +nt in the array it returns the first occurence else nill.
+Array is an ordered integer indexed collection of objects.
+A hash is an unordered object indexed collection of objects.
+Value of all the instance variables is nil.
+Values to an instance ariable can be assigned or read only via a method.

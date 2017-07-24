@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Currency App</title>
+  <link rel="stylesheet" type="text/css" href="bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="currency-app.css">
+  <script src="angular.js" type="text/javascript"></script>
+  <script src="currency-app.js" type="text/javascript"></script>
+</head>
+<body ng-app = "currency-mod">
+  <div class="container" ng-controller="currCtrl">
+    <div id = "inner">
+      <div>
+        <h1>Add Currency</h1>
+        <input type="text" ng-model="currency.name" placeholder="Enter Currency Name"/><br/>
+        <input type="text" ng-model="currency.sym" placeholder="Enter Symbol"/><br/>
+        <input type="text" ng-model="currency.val" placeholder="Enter Value"/><br/>
+        <button class="btn" ng-click="addObj()">Add Currency</button><br/>
+      </div>
+      <div>
+        <h1>Remove Currency</h1>
+        <input type="text" ng-model="remove" placeholder="Currency to remove"/><br/>
+        <button class="btn" ng-click="removeObj()">Remove Currency</button>
+      </div>
+    </div>
+    <div id = "inner">
+      <select ng-model="selectedCurrency" ng-options="item.name for item in currencies">
+      </select>
+      <input type="text" ng-model="value" placeholder="Enter Amount"><br/>
+    
+      The value of {{value | currency:"selectedCurrency.sym"}} is {{selectedCurrency.val*value | currency:"currencies[0].sym"}}
+    </div>
+  </div>
+</body>
+</html>

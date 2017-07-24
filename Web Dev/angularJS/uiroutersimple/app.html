@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="/bower_components/angular/angular.js" type="text/javascript"></script>
+  <script src="/bower_components/angular-ui-router/release/angular-ui-router.js" type="text/javascript"></script>
+  <script type="text/javascript">
+    angular.module("app",["ui.router"])
+    .config(function($stateProvider, $urlRouterProvider){
+      $urlRouterProvider.otherwise("/home");
+      $stateProvider
+      .state("home",{
+        url:"/home",
+        templateUrl: "partials/home.html"
+      })
+      .state("home.names",{
+        url: "/names",
+        templateUrl: "partials/home-nested.html",
+        controller: function($scope){
+          $scope.names = ["Sumit", "Amit", "Alok"];
+          $scope.sleeping = ["Madhav", "Supurthy"];
+        }
+      })
+      .state("home.otherview", {
+        url:"/innertemplate",
+        template:"I am the Inner Template of home"
+      })
+      .state("about",{
+        url:"/about",
+        views: {
+          " ": {templateUrl: "partials/about.html"},
+          "sales@about": {template: "Inline template! <h3>Too good right</h3>"}
+        }
+      })
+    })
+  </script>
+</head>
+<body ng-app = "app">
+  <nav class="navbar navbar-inverse" role="navigation">
+    <div class="navbar-header">
+      <a class="navbar-brand" ui-sref="#">Angular UI Router</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li><a ui-sref="home">Home</a></li>
+      <li><a ui-sref="about">About</a></li>
+    </ul>
+  </nav>
+  <div class="container">
+    <div ui-view></div>
+  </div>
+</body>
+</html>

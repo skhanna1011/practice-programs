@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="angular.js" type="text/javascript"></script>
+  <script type="text/javascript">
+    function hero(){
+      this.reverseWord = function(input) {
+        var result = "";
+        input = input  ||  "";
+        for(var i = 0; i < input.length; i++){
+          result = input.charAt(i) + result;
+        }
+        return result;
+      }
+      this.capitalize = function (input) {
+        return input.toUpperCase();
+      }
+    }
+    var factoryEx = angular.module("factoryEx", []);
+    factoryEx.factory("wordFactory", function(){
+      this.name = "Shivam";
+      var heroOb = new hero();
+      return heroOb;
+    });
+    factoryEx.controller("MyCtrl", function ($scope, wordFactory) {
+      $scope.reverseName = function(){
+        console.log(wordFactory.name);
+        $scope.reversename = wordFactory.reverseWord($scope.name)
+      }
+      $scope.$watch("name", function(newVal,oldVal){
+        console.log("oldVal"+ "and new val " + newVal);
+        $scope.reversename = wordFactory.reverseWord($scope.name)
+      });
+      $scope.capitalizeName = function(){
+        $scope.capitalname = wordFactory.capitalize($scope.name)
+      }
+    });
+  </script>
+</head>
+<body ng-app = "factoryEx">
+  <div ng-controller = "MyCtrl">
+    <input type="text" ng-model = "name"/>
+    Name reverse is : {{reversename}}<br/><br/>
+    <button ng-click = "capitalizeName()">Capitalize</button>
+    Name in capital is : {{capitalname}}
+  </div>
+</body>
+</html>

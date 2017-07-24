@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>DOM application</title>
+</head>
+<body>
+  <div>
+  	<h1 id= "head1">Dom application in JavaScript</h1>
+  	<p class = "para1">Dom means document object model and it is used to manipulate html via JavaScript</p>
+    <p class="para1">Dom means document object model and it is......................</p>
+  	<form>
+  		<label>Name:</label>
+  		<input type= "text" id="name1">
+      <button onclick="sample()">Submit</button>
+  	</form>
+  </div>
+  <script type="text/javascript">
+    function sample(){
+      var ref = document.getElementById("head1");
+      console.log(ref.textContent);
+      var ref2 = document.getElementsByClassName("para1");
+      for (var i = 0; i < ref2.length; i++) {
+        console.log(ref2[i].textContent);
+      }
+      var formRef = document.getElementById("name1");
+      document.write("Form value is " + formRef.value);
+    }
+  </script>
+</body>
+</html>

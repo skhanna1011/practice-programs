@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+  <script type="text/javascript" src="angular.js"></script>
+  <script type="text/javascript">
+    var moduleRef = angular.module("serverModule", []);
+    moduleRef.controller("mainController", function($http,$scope){
+      $scope.updateTime = function(){
+        var promise = $http({url:"time.php"});
+        $scope.time = "very good";
+        var sucessFunc = function(response){
+          console.log(response);
+          $scope.time = response.data;
+        }
+        var errorFunc = function(errorInfo){
+          console.log("error");
+        }
+        promise.then(sucessFunc,errorFunc);
+      }
+    });
+  </script>
+</head>
+<body ng-app = "serverModule">
+  <div ng-controller = "mainController">
+    The time is <strong>{{time}}</strong><br/>
+    <button ng-click = "updateTime()">Update</button>
+  </div>
+</body>
+</html>

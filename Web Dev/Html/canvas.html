@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head><title>Canvas API</title>
+</head>
+<body>
+	<canvas id = "canvas" width = "500px" height="500px" style="border: 2px solid green">
+	canvas not supported
+	</canvas>
+	<script type="text/javascript">
+		var ref = document.getElementById("canvas");
+
+		var draw = ref.getContext('2d');
+		draw.fillStyle="red"
+		draw.fillRect(50,10,100,50);
+		draw.fillStyle="red"
+		draw.fillRect(60,20,100,50);
+		draw.fillStyle="red"
+		draw.fillRect(70,30,100,50);
+
+		draw.fillStyle="orange"
+		draw.fillRect(100,100,250,50);
+		draw.fillStyle="white"
+		draw.fillRect(100,150,250,50);
+		draw.fillStyle="green"
+		draw.fillRect(100,200,250,50);
+		draw.strokeStyle="blue"
+        draw.arc(225, 175, 25, 0, 2 * Math.PI);
+        draw.moveTo(225,150);
+        draw.lineTo(225,200);
+        draw.moveTo(200,175);
+        draw.lineTo(250,175);
+        draw.moveTo(230,152);
+        draw.lineTo(220,198);
+        draw.moveTo(235,154);
+        draw.lineTo(215,196);
+        draw.moveTo(225,150);
+        draw.lineTo(225,200);
+        draw.stroke();
+	</script>
+</body>
+</html>

@@ -1,0 +1,9 @@
+The first parameter in the uri is specified using a "?" any subsequent parameters will bementioned using "&".
+https://gender-api.com/get?name=elizabeth&key=yourkey
+https -> protocol
+gender-api.com -> domain name
+get?name=elizabeth&key=yourkey -> uniform resource identifier
+get -> controller/action
+name, key -> parameters
+elizabeth -> value to the parameters
+The order of parameters doesn't matter

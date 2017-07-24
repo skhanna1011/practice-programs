@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<head>
+<style type="text/css">
+    #view-container{
+        border:4px solid green;
+        padding: 10px;
+        margin:10px;
+    }
+</style>
+    <title>AngularJS Routes </title>
+    <script src="angular.js"></script>
+    <script src="angular-route.js"></script>
+    <script>
+    var module = angular.module("sampleApp", ['ngRoute']);
+    module.config(function($routeProvider) {
+            $routeProvider.
+                    when('/route1/:param', {
+                        templateUrl: 'templates/template1.html',
+                        controller: 'RouteController'
+                    }).
+                    when('/route2/:param', {
+                        templateUrl: 'templates/template2.html',
+                        controller: 'RouteController'
+                    }).
+                    otherwise({
+                        redirectTo: '/',
+                        templateUrl:'templates/index.html',
+                        controller:'IndexController'
+                    }).
+                      when('/comment/:content', {
+                        templateUrl: 'templates/comments.html',
+                        controller: 'CommentsController'
+                    });
+        });
+
+    module.controller("RouteController", function($scope, $routeParams) {
+        $scope.param = $routeParams.param;  
+        $scope.name = "ZenRays Technologies";
+    })
+    .controller('IndexController',function($scope){
+        $scope.message = "Welcome to home page";
+    })
+     .controller('CommentsController',function($scope,$routeParams){
+        var comments = ['Lets have briyani on sunday','Thanks to all vegeterians','Non veg is going to harm your body'];
+        var commentId = $routeParams.content;
+        $scope.commentBody = comments[commentId];
+    })
+</script>
+</head>
+<body ng-app="sampleApp">
+<a href="#/route1/abcd">Route 1</a><br/>
+<a href="#/route2/1234">Route 2</a><br/>
+<a href="#/comment/0">view comment</a><br/>
+<a href="#/comment/1">view comment</a><br/>
+<a href="#/comment/2">view comment</a><br/>
+
+<div id = "view-container" ng-view></div>
+
+</body>
+</html>

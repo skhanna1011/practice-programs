@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+  <script type="text/javascript" src = "angular.js"></script>
+  <script type="text/javascript">
+    angular.module("myApp", [])
+    .directive("hello", function() {
+      return{
+        restrict: "E",
+        template: "<div>Hey I am the result of <strong ng-click='obj.sayHello()'>Hello</strong></div>",
+        replace: true,
+        controller: function(){
+          this.sayHello = function(){
+            alert("It's a beautifull day and we are coding! TBSS")
+          }
+        },
+        controllerAs:"obj"
+      }
+    })
+  </script>
+</head>
+<body ng-app="myApp">
+  <hello></hello>
+</body>
+</html>

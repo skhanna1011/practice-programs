@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+  <script type="text/javascript" src="angular.js"></script>
+  <script type="text/javascript">
+    var myModule = angular.module("myModule", []);
+    myModule.controller("myCtrl", function () {
+      alert("Hey, my object is created")
+      this.name = "Zenrays"
+      this.companyLoc = "Koramangla";
+      this.sayName = function(){
+        alert(this.name);
+      }
+    })
+  </script>
+</head>
+<body ng-app = "myModule">
+  <div ng-controller = "myCtrl as ctrlOb">
+    The name is {{ctrlOb.name}}
+    The location is {{ctrlOb.companyLoc}}
+    <button ng-click = "ctrlOb.sayName()">Show Name</button>
+  </div>
+</body>
+</html>

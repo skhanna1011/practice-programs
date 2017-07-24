@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script type="text/javascript" src= "angular.js"></script>
+	<script type="text/javascript">
+		var mainModuleRef = angular.module("main", []);
+		mainModuleRef.controller("currency", currencyConvertor);
+		function currencyConvertor($scope){console.log($scope.amount);}
+	</script>
+</head>
+<body ng-app="main">
+  <input ng-controller="currency" type="number" ng-model="amount">
+
+</body>
+</html>

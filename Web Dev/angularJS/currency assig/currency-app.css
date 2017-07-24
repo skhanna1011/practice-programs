@@ -1,0 +1,14 @@
+.container{
+  border: 3px solid turquoise;
+  border-radius: 10px;
+  padding: 0px;
+}
+#inner{
+  border: 3px solid grey;
+  border-radius: 10px;
+  margin: 5px;
+  padding: 5px;
+}
+.btn{
+  background-color: skyblue;
+}
