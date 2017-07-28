@@ -6,4 +6,5 @@ get?name=elizabeth&key=yourkey -> uniform resource identifier
 get -> controller/action
 name, key -> parameters
 elizabeth -> value to the parameters
-The order of parameters doesn't matter
+The order of parameters doesn't matter.
+ORM(object-relational mappin)maps Tables to classes, Table columns to object attributes, Table rows to objects.

@@ -1,0 +1,5 @@
+database
+tables
+columns(columns will have a type) - integer, float, varchar(string), text, date, time,datetime
+primary key = A column in a table which must always be unique, integer and is auto-incremented.
+Rows 

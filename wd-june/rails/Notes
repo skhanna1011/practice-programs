@@ -1,0 +1,10 @@
+All the behaviour would be written inside the models.
+All models maps to db tables.
+Controllers
+Conductors of an MVC app.
+Controllers accepts requests, perform the necessary processing and then pass control to view layer.
+In response to a request, the controller typically performs a CRUD operation on the model, sets up variables to be used in the view, and then proceeds to render to another action after processing is complete.
+Views
+Contains HTML mark-up rendered in a browser.
+These templates take plain html and use Ruby to inject the data and view specific logic as needed.
+First error:- no route for your req Fix:- add get 'req/path'. Second error:- unknown action Fix:- add action in controller.Third error :- Template not found Fix add a viewfile in controller

@@ -1,0 +1,7 @@
+Model name is singular and is same as the downcase of class name and follows snake case.
+Every model maps to a table and table name will be plural. For ex:- category is the model and categories is the model.
+Every model will have it's own respective controller with the plural of the model name followed by _controller. Ex:- category model will have categories_controller
+Every controller will have its own view folder. Ex:- categories_controller will have its own category dir in views.
+Every action defined inside the controller will have its own view file.
+Instance variables defined inside an action of a controller available only to it's viewfile.
+Ever table will always have it's primary key called as id, which will be an integer and set to auto incriment.

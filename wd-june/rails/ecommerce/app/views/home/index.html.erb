@@ -1,0 +1,39 @@
+<h1>Welcome to home</h1>
+2 + 2 : <%= 2+2%>
+<% names = ["ramesh", "suresh","veersh","ganesh"]%>
+<ul>
+  <li>Virat</li>
+  <li>Dhoni</li>
+</ul>
+
+<ol>
+  <li>Apple</li>
+  <li>Samsung</li>
+  <li>Mi</li>
+</ol>
+
+<h3>Listing Names</h3>
+<ol><% names.each do |name|%>
+  <li><%= name.capitalize%></li>
+  <%end%>
+</ol>
+<%companies = []%>
+<%if companies.empty?%>
+  <p>Companies not found</p>
+<%else%>
+  <h3>Listing Companies</h3>
+  <ol><%companies.each do |company|%>
+    <li><%= company%></li>
+    <%end%>
+  </ol>
+<%end%>
+<div class="navbar">
+  <a href="/home/about">About</a><br/>
+  <%= link_to "About(ror)", home_about_path%><br/>
+  <%= link_to "Contact", home_contact_path%>
+</div>
+<ul>
+  <%@categories.each do |category|%>
+    <li><%=category.name%>
+  <%end%>
+</ul>
