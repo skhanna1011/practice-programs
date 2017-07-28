@@ -27,11 +27,6 @@
     <%end%>
   </ol>
 <%end%>
-<div class="navbar">
-  <a href="/home/about">About</a><br/>
-  <%= link_to "About(ror)", home_about_path%><br/>
-  <%= link_to "Contact", home_contact_path%>
-</div>
 <ul>
   <%@categories.each do |category|%>
     <li><%=category.name%>
