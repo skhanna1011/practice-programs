@@ -7,4 +7,41 @@ In response to a request, the controller typically performs a CRUD operation on 
 Views
 Contains HTML mark-up rendered in a browser.
 These templates take plain html and use Ruby to inject the data and view specific logic as needed.
-First error:- no route for your req Fix:- add get 'req/path'. Second error:- unknown action Fix:- add action in controller.Third error :- Template not found Fix add a viewfile in controller
+First error:- no route for your req Fix:- add get 'req/path'. Second error:- unknown action Fix:- add action in controller.Third error :- Template not found Fix add a viewfile in controller.
+ORM(object-relational mappin)maps Tables to classes, Table columns to object attributes, Table rows to objects.
+-------------------------------------Create----------------------------------------
+.new is a class method used to instantiate an object we can pass # as na argument.
+.valid? is an isntance method used to check weather the object attributes pass the validations we are checking for, it's boolean meathod.
+.save is a instance method used to insert a record to the database table.
+.errors.full_messages is an instance method used to display the error messages on an object, it's available once we try to save the object and it fails. It returns an array of messages.
+.create is a class method which instantiate, assign and save the object in the table.
+---------------------------------------Read----------------------------------------
+.all is a class method which returns all the rows in the table as an array of objects, if the table is empty it returns empty array.
+.find is a class method takes an arguments and returns the row that matches the argument, the argument must be an id, if the id is not found it raise an exception.
+.find_by is a class method which takes a hash as an arguments the key matches the colulmn name and the value matches the column value, it returns the first row as an object, if the record is not found, it doesn't raise an exception but returns nil.
+.where is a class method used to find records based on a condition, it returns an array of the object if the query matches else it returns an empty array.
+eg:- Find all products whose category id is 1
+products = Product.where('category_id = ?', 1)
+Find all the products whose category id is 1 and price is less the 500
+products = Product.where('category_id = ? AND price < ?', 1, 500)
+Find all the products whose price is greater than or equal to 750
+prodcuts = Product.where('price >= ?', 750)
+Find all the products whose price is in-btwn 250 & 500
+products = Product.where('price >= ? AND price <= ?', 250, 500)
+Product.where('price BETWEEN ? AND ? ', 250,500)
+Find all the products whose price is in-btwn 250 & 500 and belongs to category_id 1
+Product.where('category_id = ? AND price BETWEEN ? AND ? ', 1, 250,500)
+Find products like leather(Search)
+Product.where('name LIKE ?', "%leather%")
+--------------------------------------Update---------------------------------------
+.updates_attributes is an instance method, find the record first and then call update_attributes on it
+p = product.find(93)
+p.update_attributes(name: "New Name", price: 800)
+p.change_price(123) :- Changes the price attribute of p object.
+p.previous_changes
+-------------------------------------Destroy---------------------------------------
+.destroy is an instance method that deletes the record from the database, the obj is read only mode till we have a refrence to it but the data base instance for the object is deleted.
+p = Product.find(123)
+p.destroy freezes the record till there is a refrences to it.
+Product.delete(123,124) deletes products with ids 123 & 124 you can pass range as an argument.
+Product.delete_all deletes all the data in products table.
