@@ -34,7 +34,7 @@ Product.where('category_id = ? AND price BETWEEN ? AND ? ', 1, 250,500)
 Find products like leather(Search)
 Product.where('name LIKE ?', "%leather%")
 --------------------------------------Update---------------------------------------
-.updates_attributes is an instance method, find the record first and then call update_attributes on it
+.update_attributes is an instance method, find the record first and then call update_attributes on it
 p = product.find(93)
 p.update_attributes(name: "New Name", price: 800)
 p.change_price(123) :- Changes the price attribute of p object.
@@ -45,3 +45,4 @@ p = Product.find(123)
 p.destroy freezes the record till there is a refrences to it.
 Product.delete(123,124) deletes products with ids 123 & 124 you can pass range as an argument.
 Product.delete_all deletes all the data in products table.
+collection_select takes 4 arguments attribute, data source, primary_key, values to be displayed.

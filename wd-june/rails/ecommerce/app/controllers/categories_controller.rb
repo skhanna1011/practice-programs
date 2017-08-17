@@ -1,5 +1,7 @@
 class CategoriesController < ApplicationController
   before_action :set_category, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, except: [:index, :show]
+  before_action :check_is_admin, except: [:index, :show]
 
   # GET /categories
   # GET /categories.json
@@ -10,7 +12,6 @@ class CategoriesController < ApplicationController
   # GET /categories/1
   # GET /categories/1.json
   def show
-    @products = Product.where('category_id = ?',@category.id)
   end
 
   # GET /categories/new
