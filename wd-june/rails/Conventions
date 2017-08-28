@@ -5,3 +5,4 @@ Every controller will have its own view folder. Ex:- categories_controller will 
 Every action defined inside the controller will have its own view file.
 Instance variables defined inside an action of a controller available only to it's viewfile.
 Ever table will always have it's primary key called as id, which will be an integer and set to auto incriment.
+Foregin key should be model name _ id

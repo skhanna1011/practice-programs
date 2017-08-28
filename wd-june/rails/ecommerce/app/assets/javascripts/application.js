@@ -16,3 +16,5 @@
 //= require jquery_ujs
 //= require jquery
 //= require bootstrap-sprockets
+//= require Chart.bundle
+//= require chartkick

@@ -1,0 +1,12 @@
+<p id="notice"><%= notice %></p>
+
+  <h2><strong>Name:</strong></h2>
+  <h3><%= @student.name %></h3>
+  <h5><strong>Course</strong></h5>
+  <ol><% @student.courses.each do |course| %>
+    <li><%= link_to course.name, course %></li>
+  <% end %></ol>
+
+
+<%= link_to 'Edit', edit_student_path(@student) %> |
+<%= link_to 'Back', students_path %>

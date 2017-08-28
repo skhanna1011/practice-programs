@@ -1,0 +1,37 @@
+<%= form_with(model: instructor, local: true) do |form| %>
+  <% if instructor.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(instructor.errors.count, "error") %> prohibited this instructor from being saved:</h2>
+
+      <ul>
+      <% instructor.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name, id: :instructor_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :mobile_no %>
+    <%= form.text_field :mobile_no, id: :instructor_mobile_no %>
+  </div>
+
+  <div class="field">
+    <%= form.label :bio %>
+    <%= form.text_area :bio, id: :instructor_bio %>
+  </div>
+
+  <div class="field">
+    <%= form.label :select_courses %><br/>
+    <%= form.collection_check_boxes :course_ids, Course.all, :id, :name %> 
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -1,4 +1,16 @@
 Rails.application.routes.draw do
+  get 'dashboard/home'
+
+  get 'dashboard/categories'
+
+  get 'dashboard/products'
+
+  get 'dashboard/users'
+
+  get 'dashboard/reviews'
+
+  get 'dashboard/orders'
+
   devise_for :users
   root "products#index"
   get 'home/index'

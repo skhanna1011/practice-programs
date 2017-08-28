@@ -13,7 +13,7 @@ class CartLineItem < ApplicationRecord
       line_item.errors.full_messages
     else
       self.save
-      line_item.errors.full_messages
+      self.errors.full_messages
     end
   end
 end
