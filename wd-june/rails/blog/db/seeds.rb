@@ -10,14 +10,14 @@ Role.create(name:"author")
 Role.create(name:"moderator")
 Role.create(name:"user")
 
-User.create(username: "admin", email: "admin@gmal.com", password:"secret123")
+User.create(username: "admin", email: "admin@gmail.com", password:"secret123")
 User.last.roles << Role.first
 
-User.create(username: "author", email: "author@gmal.com", password:"secret123")
+User.create(username: "author", email: "author@gmail.com", password:"secret123")
 User.last.roles << Role.second
 
-User.create(username: "moderator", email: "moderator@gmal.com", password:"secret123")
+User.create(username: "moderator", email: "moderator@gmail.com", password:"secret123")
 User.last.roles << Role.third
 
-User.create(username: "user", email: "user@gmal.com", password:"secret123")
+User.create(username: "user", email: "user@gmail.com", password:"secret123")
 User.last.roles << Role.last

@@ -5,7 +5,7 @@ class Ability
     if user.nil?
       can :read, [Category, Article]
     elsif user.role? "admin"
-      can :manage, [Category, Article]
+      can :manage, [Category, Article, User]
     elsif user.role? "author"
       can [:read], [Category, Article]
       can :create, Article
