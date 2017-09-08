@@ -9,6 +9,7 @@ Contains HTML mark-up rendered in a browser.
 These templates take plain html and use Ruby to inject the data and view specific logic as needed.
 First error:- no route for your req Fix:- add get 'req/path'. Second error:- unknown action Fix:- add action in controller.Third error :- Template not found Fix add a viewfile in controller.
 ORM(object-relational mappin)maps Tables to classes, Table columns to object attributes, Table rows to objects.
+CSRF stands for Cross Site Resource Forgery.
 -------------------------------------Create----------------------------------------
 .new is a class method used to instantiate an object we can pass # as na argument.
 .valid? is an isntance method used to check weather the object attributes pass the validations we are checking for, it's boolean meathod.

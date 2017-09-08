@@ -1,0 +1,13 @@
+<h2>Enter Address</h2>
+<%= form_tag(google_geocoding_path, method: :get) do %>
+  <div class="field">
+    <label>Address:</label><br/>
+    <%= text_field_tag :address, params[:address] %>
+  </div>
+  <div class="action">
+    <%= submit_tag "Search" %>
+  </div>
+<% end %>
+<% if !@result.nil? %>
+  The Cordinates of <%= @result["results"][0]["formatted_address"] %> is Lattitude: <%= @result["results"][0]["geometry"]["location"]["lat"]%> Longitude: <%= @result["results"][0]["geometry"]["location"]["lng"]%>
+<% end %>
