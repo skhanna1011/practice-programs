@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Guess-Game</title>
+</head>
+<body>
+  <h1 id = "greeting"></h1>
+  <p id = "msg"></p>
+  <script type="text/javascript">
+    var name = prompt("Enter your name");
+    var greetingHandle = document.getElementById('greeting');
+    var msgHandle = document.getElementById('msg');
+    greetingHandle.innerHTML = "Welcome to the game " + name;
+    var targetNumber = Math.round(Math.random() * 100);
+    console.log(targetNumber);
+    var playerGuesses = 0;
+    while(playerGuesses < 10){
+      var guess = parseInt(prompt("Enter the number"));
+      playerGuesses++;
+      var guessLeft = 10 - playerGuesses
+      if(guess < targetNumber){
+        msgHandle.innerHTML = "OOPS!! Your no was low, Guess Left :- " + guessLeft;
+      }
+      else if(guess > targetNumber){
+        msgHandle.innerHTML = "OOPS!! Your no was high, Guess Left :- " + guessLeft;
+      }
+      else if(guess == targetNumber){
+        msgHandle.innerHTML = "Great You Guessed my no in " + playerGuesses + " turns";
+        break;
+      }
+    }
+    if(guess != targetNumber){
+      msgHandle.innerHTML = "Sorry " + name + " you ran out of turns, my number was " + targetNumber;
+    }
+  </script>
+</body>
+</html>
