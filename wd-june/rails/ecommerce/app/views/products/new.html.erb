@@ -28,7 +28,36 @@
   <%= f.collection_select :category_id, Category.all, :id, :name, prompt:"Select Category" %><%= errors[:category_id].join(",")%>
 </div>
 
+<div class="field">
+  <label>Sub Category : </label><br/>
+    <%= f.collection_select :sub_category_id, [], :id, :name, prompt: "Select Sub      Category" %>
+</div>
+
 <div class="action">
   <%= f.submit%> or <%= link_to"Back", products_path%>
 </div>
+<script type="text/javascript">
+  var categoryHandle = document.getElementById('product_category_id');
+  var subCategoryHandle = document.getElementById('product_sub_category_id');
+  categoryHandle.addEventListener('change', function() {
+    subCategoryHandle.innerHTML = "";
+    if(categoryHandle.value !== ""){
+      var xhr = new XMLHttpRequest();
+      xhr.open('GET', '/ajax_calls/find_sub_categories?category_id=' + categoryHandle.value, true);
+      xhr.onreadystatechange = function() {
+        if(xhr.readyState === 4 && xhr.status === 200){
+          var subCategories = JSON.parse(xhr.responseText);
+          subCategories.forEach(function(subCategory){
+            var newElement = document.createElement('option');
+            var newText = document.createTextNode(subCategory.name);
+            newElement.appendChild(newText);
+            newElement.setAttribute("value", subCategory.id);
+            subCategoryHandle.appendChild(newElement);
+          });
+        }
+      }
+      xhr.send();
+    }
+  },false);
+</script>
 <% end %>

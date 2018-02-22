@@ -1,0 +1,13 @@
+body{
+  margin: 20px;
+}
+form{
+  box-shadow: 2px 2px 10px 1px grey;
+  border-radius: 5px;
+  padding: 10px;
+}
+.submitted{
+  border: 1px solid  #e6e6e6;
+  margin-top: 10px;
+  padding: 10px;
+}

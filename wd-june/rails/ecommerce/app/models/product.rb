@@ -1,6 +1,7 @@
 class Product < ApplicationRecord
 
   belongs_to :category
+  belongs_to :sub_category
   has_many :cart_line_items
   
   validates_presence_of :name, :price, :category_id, :description

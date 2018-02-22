@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Gender api</title>
+</head>
+<body>
+  <h2>Enter your name</h2>
+  <label>Name :</label>
+  <input type="text" id="name"/>
+  <h3 id="gender"></h3>
+  <script type="text/javascript">
+    var genderHandle = document.getElementById('gender');
+    var nameHandle = document.getElementById('name');
+
+    nameHandle.addEventListener('blur', function(){
+      if(nameHandle.value !== ""){
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', 'http://gender-api.com/get?name=' + nameHandle.value +'&key=pRPLCejozFwCHFbVCR', true);
+        xhr.onreadystatechange = function(){
+          var result;
+          console.log(xhr.readyState);
+          if(xhr.readyState === 4 && xhr.status === 200){
+            result = JSON.parse(xhr.responseText);
+            genderHandle.innerHTML = result.gender;
+          }
+        }
+        xhr.send();
+      }
+    }, false);
+  </script>
+</body>
+</html>

@@ -11,6 +11,10 @@ Rails.application.routes.draw do
 
   get 'dashboard/orders'
 
+  get'ajax_calls/check_email_taken'
+
+  get'ajax_calls/find_sub_categories'
+
   devise_for :users
   root "products#index"
   get 'home/index'

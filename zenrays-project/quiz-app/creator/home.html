@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html ng-app = "quizQuestion">
+<head>
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.4.5/css/mdb.min.css">
+  <link rel="stylesheet" type="text/css" href="app.css">
+  <title>Quiz-Questions</title>
+</head>
+<body>
+  <div class="container">
+    <form ng-controller = "QuestionController as questionCtrl">
+      <div class="form-group">
+        <label>Question:</label>
+        <input type="text" class="form-control" ng-model="questionCtrl.qAndA.question">
+      </div>
+      <div class="form-group">
+        <input type="radio" ng-model="questionCtrl.qAndA.type" value="scq">
+        <label>SCQ</label>
+        <input type="radio" ng-model="questionCtrl.qAndA.type" value="mcq">
+        <label>MCQ</label>
+        <input type="radio" ng-model="questionCtrl.qAndA.type" value="ans">
+        <label>Q&A</label>
+      </div>
+      <div class="form-group" ng-switch="questionCtrl.qAndA.type">
+        <div ng-switch-when="scq">
+          <div>
+            <input type="radio" ng-model="questionCtrl.qAndA.answer" value="{{questionCtrl.qAndA.options[0]}}">
+            <label>A</label>
+            <input type="text" class="form-control" ng-model ="questionCtrl.qAndA.options[0]">
+          </div>
+          <div>
+            <input type="radio" ng-model=questionCtrl.qAndA.answer value="{{questionCtrl.qAndA.options[1]}}">
+            <label>B</label>
+            <input type="text" class="form-control" ng-model ="questionCtrl.qAndA.options[1]">
+          </div>
+          <div>
+            <input type="radio" ng-model="questionCtrl.qAndA.answer" value="{{questionCtrl.qAndA.options[2]}}">
+            <label>C</label>
+            <input type="text" class="form-control" ng-model ="questionCtrl.qAndA.options[2]">
+          </div>
+          <div>
+            <input type="radio" ng-model="questionCtrl.qAndA.answer" value="{{questionCtrl.qAndA.options[3]}}">
+            <label>D</label>
+            <input type="text" class="form-control" ng-model = "questionCtrl.qAndA.options[3]">
+          </div>
+        </div>
+        <div ng-switch-when="mcq">
+          <div>
+            <input type="checkbox" ng-model="questionCtrl.qAndA.optionA">
+            <label>A</label>
+            <input type="text" class="form-control" ng-model ="questionCtrl.qAndA.options[0]">
+          </div>
+          <div>
+            <input type="checkbox" ng-model=questionCtrl.qAndA.optionB>
+            <label>B</label>
+            <input type="text" class="form-control" ng-model ="questionCtrl.qAndA.options[1]">
+          </div>
+          <div>
+            <input type="checkbox" ng-model="questionCtrl.qAndA.optionC">
+            <label>C</label>
+            <input type="text" class="form-control" ng-model ="questionCtrl.qAndA.options[2]">
+          </div>
+          <div>
+            <input type="checkbox" ng-model="questionCtrl.qAndA.optionD">
+            <label>D</label>
+            <input type="text" class="form-control" ng-model = "questionCtrl.qAndA.options[3]">
+          </div>
+        </div>
+        <div class="form-group" ng-switch-when="ans">
+          <label>Answer</label>
+          <input type="text" class="form-control" ng-model="questionCtrl.qAndA.answer">
+        </div>
+      </div>
+      <input type="submit" class="btn btn-primary" ng-click="questionCtrl.submit()">
+    </form>
+    <div  ng-controller = "QuestionsController as questionsCtrl">
+      <div ng-repeat = "question in questionsCtrl.questions" class="submitted">
+        <p><b>Q.</b> {{question.question}}</p>
+        <ul ng-show = "question.type === 'mcq' || question.type === 'scq'">
+          <b>Options</b>
+          <li>{{question.options[0]}}</li>
+          <li>{{question.options[1]}}</li>
+          <li>{{question.options[2]}}</li>
+          <li>{{question.options[3]}}</li>
+        </ul>
+        <p ng-hide = "question.type === 'mcq'"><b>A.</b> {{question.answer}}</p>
+        <p ng-show = "question.type === 'mcq'"><b>A.</b> {{question.answers.join(',')}}</p>
+        <a href ng-click = "questionsCtrl.remove(question.id)">Remove</a>
+      </div>
+    </div>
+  </div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.4.5/js/mdb.min.js"></script>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.7/angular.js"></script>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-resource.js"></script>
+  <script type="text/javascript" src="app.js"></script>
+</body>
+</html>

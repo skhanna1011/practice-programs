@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Date Object</title>
+</head>
+<body>
+  <script type="text/javascript">
+    const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+    const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sept", "Oct", "Nov", "Dec"];
+    var today = new Date();
+    console.log(today);
+    console.log("Today date is " + today.getDate());
+    console.log("Today is " + days[today.getDay()]);
+    console.log("Year is " + today.getFullYear());
+    console.log("Month is " + months[today.getMonth()]);
+
+    var date = new Date(2017,9,2);
+    console.log(date);
+    
+  </script>
+</body>
+</html>

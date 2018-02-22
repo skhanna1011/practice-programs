@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dayborn</title>
+</head>
+<body>
+  <label>Enter Date of birth</label>
+  <input type="date" id = "dob"/>
+  <h2 id = "msg"></h2>
+  <script type="text/javascript">
+    const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+    var dobHandle = document.getElementById('dob');
+    var msgHandle = document.getElementById('msg');
+
+    dobHandle.addEventListener("change", function(){
+      var dateInput = dobHandle.value.split("-");
+      var dob = new Date(dateInput[0], dateInput[1] - 1, dateInput[2]);
+      msgHandle.innerHTML = "You were born on a " + days[dob.getDay()];
+    });
+  </script>
+</body>
+</html>

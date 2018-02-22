@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Google distance</title>
+</head>
+<body>
+  <label>Source :</label><input type="text" id="source"/>
+  <label>Destination :</label><input type="text" id="destination"/>
+  <br/>
+  <button id="calculate">Calculate Distance</button>
+  <p id="result"></p>
+  <script type="text/javascript">
+    //https://maps.googleapis.com/maps/api/distancematrix/json?origins=Vancouver+BC|Seattle&destinations=San+Francisco|Victoria+BC&mode=bicycling&language=fr-FR&key=api_key
+    var sourceHandle = document.getElementById('source');
+    var destinationHandle = document.getElementById('destination');
+    var calculateHandle = document.getElementById('calculate');
+    var resultHandle = document.getElementById('result');
+
+    calculateHandle.addEventListener('click', function(){
+      var xhr = new XMLHttpRequest();
+      xhr.open('GET', `https://maps.googleapis.com/maps/api/distancematrix/json?origins=${sourceHandle.value}&destinations=${destinationHandle.value}&key=AIzaSyBmY8ucATzyhNv5Fp1aMMefwlgR7zeNEnI`, true);
+      console.log(xhr.readyState);
+
+      xhr.onreadystatechange = function(){
+        if(xhr.readyState === 4 && xhr.status === 200){
+          console.log(xhr.readyState);
+          result = JSON.parse(xhr.responseText);
+          console.log(result["rows"][0]["elements"][0]["distance"]["text"]);
+          resultHandle.innerHTML = result["rows"][0]["elements"][0]["distance"]["text"];
+        }
+      }
+      xhr.send();
+    })
+  </script>
+</body>
+</html>

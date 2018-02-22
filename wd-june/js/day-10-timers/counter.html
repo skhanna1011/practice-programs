@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Counter</title>
+</head>
+<body>
+  <label>Date:</label>
+  <input type="date" id="date"/>
+  <button id="start">Start</button>
+  <h3 id="result"></h3>
+
+  <script type="text/javascript">
+    var dateHandle = document.getElementById('date');
+    var startHandle = document.getElementById('start');
+    var today = new Date();
+
+    function leadingZero(no){
+      return ("0" + no).slice(-2)
+    }
+
+    function runTimer(millisec){
+      millisec += 1000;
+      var sec = millisec/1000;
+      var days, hrs, mins, secs;
+
+      days = leadingZero(Math.floor(sec / 86400));
+      hrs = leadingZero(Math.floor((sec - days * 86400) / 3600));
+      mins = leadingZero(Math.floor((sec - hrs * 3600)/60));
+      secs = leadingZero(Math.floor(sec - (hrs * 3600 + mins * 60)));
+
+      return `${hrs}:${mins}:${secs}`;
+    }
+
+    dateHandle.addEventListener('change', function(){
+      var inputDate = new Date(dateHandle.value);
+      var today = new Date();
+      if(today > inputDate){
+        var counter = today - inputDate;
+
+      }
+    });
+  </script>
+</body>
+</html>
