@@ -1,25 +1,13 @@
 var app = angular.module("quizQuestion", ['ngResource']);
-questions = []
+
 app.controller("QuestionsController", function($resource) {
-  var Questions = $resource('http://localhost:3000/questions',{});
-  questions = Questions.query();
-  this.questions = questions;
-
-  this.remove = function(i) {
-    var Question = $resource('http://localhost:3000/questions/:id', {id: '@id'});
-    var question = Question.remove({id: i}, function() {
-      questions = Questions.query();
-      console.log("asdf")
-    });
-  }
-});
-
-app.controller("QuestionController", function($resource) {
   this.qAndA = {
     options: []
   };
 
   var Questions = $resource('http://localhost:3000/questions',{});
+
+  this.questions = Questions.query();
 
   this.submit = function() {
     if (this.qAndA.type === "mcq") {
@@ -39,12 +27,21 @@ app.controller("QuestionController", function($resource) {
       this.qAndA.answers.push(this.qAndA.options[3]);
     }
 
-    questions.push(this.qAndA);
     var newQuestion = new Questions(this.qAndA);
-    newQuestion.$save();
+    newQuestion.$save()
+    .$promise.then(function(question) {
+      this.questions = Questions.query();      
+    });
+
     this.qAndA = {
       options: [],
     };
-    questions = Questions.query();
+  }
+
+  this.remove = function(i) {
+    var Question = $resource('http://localhost:3000/questions/:id', {id: '@id'});
+    var question = Question.remove({id: i}, function() {
+    });
+    this.questions = Questions.query();
   }
 });
